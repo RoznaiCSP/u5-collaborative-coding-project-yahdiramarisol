@@ -17,6 +17,8 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . f f f f d d d c . . 
         . . . . . . . . . . c c c . . . 
         `, SpriteKind.Player)
+    controller.moveSprite(player2)
+    player2.setStayInScreen(true)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     player1 = sprites.create(img`
@@ -37,8 +39,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . c c c c c c c c b b . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Player)
+    controller.moveSprite(player1)
+    player1.setStayInScreen(true)
 })
 // Don't forget to comment your code as you work!
 let player1: Sprite = null
 let player2: Sprite = null
 scene.setBackgroundColor(7)
+game.splash("Choose your player A or B")
+info.setLife(6)
