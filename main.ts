@@ -1,24 +1,16 @@
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
+    answer1 = game.askForNumber("What is 5 x 5?", 3)
+    if (answer1) {
+        game.splash("Correct!")
+    } else {
+        info.changeLifeBy(-1)
+    }
+})
 // Don't forget to comment your code as you work!
 let projectile2: Sprite = null
-let mySprite = sprites.create(img`
-    . . . . . . . . . . b 5 b . . . 
-    . . . . . . . . . b 5 b . . . . 
-    . . . . . . b b b b b b . . . . 
-    . . . . . b b 5 5 5 5 5 b . . . 
-    . . . . b b 5 d 1 f 5 5 d f . . 
-    . . . . b 5 5 1 f f 5 d 4 c . . 
-    . . . . b 5 5 d f b d d 4 4 . . 
-    . b b b d 5 5 5 5 5 4 4 4 4 4 b 
-    b d d d b b d 5 5 4 4 4 4 4 b . 
-    b b d 5 5 5 b 5 5 5 5 5 5 b . . 
-    c d c 5 5 5 5 d 5 5 5 5 5 5 b . 
-    c b d c d 5 5 b 5 5 5 5 5 5 b . 
-    . c d d c c b d 5 5 5 5 5 d b . 
-    . . c b d d d d d 5 5 5 b b . . 
-    . . . c c c c c c c c b b . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+let answer1 = 0
 scene.setBackgroundColor(7)
+info.setLife(3)
 let projectile = sprites.create(img`
     . . . . . c c c c c c c . . . . 
     . . . . c 6 7 7 7 7 7 6 c . . . 
@@ -37,9 +29,30 @@ let projectile = sprites.create(img`
     . f 6 1 1 1 1 1 6 6 6 6 c . . . 
     . . f f c c c c c c c c . . . . 
     `, SpriteKind.Enemy)
-projectile.setPosition(145, 50)
+let mySprite = sprites.create(img`
+    . . . . . . . . . . b 5 b . . . 
+    . . . . . . . . . b 5 b . . . . 
+    . . . . . . b b b b b b . . . . 
+    . . . . . b b 5 5 5 5 5 b . . . 
+    . . . . b b 5 d 1 f 5 5 d f . . 
+    . . . . b 5 5 1 f f 5 d 4 c . . 
+    . . . . b 5 5 d f b d d 4 4 . . 
+    . b b b d 5 5 5 5 5 4 4 4 4 4 b 
+    b d d d b b d 5 5 4 4 4 4 4 b . 
+    b b d 5 5 5 b 5 5 5 5 5 5 b . . 
+    c d c 5 5 5 5 d 5 5 5 5 5 5 b . 
+    c b d c d 5 5 b 5 5 5 5 5 5 b . 
+    . c d d c c b d 5 5 5 5 5 d b . 
+    . . c b d d d d d 5 5 5 b b . . 
+    . . . c c c c c c c c b b . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
+projectile.setPosition(144, 0)
+answer1 = 25
 forever(function () {
+    projectile.setStayInScreen(true)
     projectile.setVelocity(0, 100)
+    controller.moveSprite(projectile)
     projectile2 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
