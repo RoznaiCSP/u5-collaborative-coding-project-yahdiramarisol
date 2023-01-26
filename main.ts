@@ -1,6 +1,6 @@
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
-    answer1 = game.askForNumber("What is 5 x 5?", 3)
-    if (answer1) {
+    question = game.askForNumber("What is 5 x 5?", 3)
+    if (question == answer1) {
         game.splash("Correct!")
     } else {
         info.changeLifeBy(-1)
@@ -8,6 +8,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, ot
 })
 // Don't forget to comment your code as you work!
 let projectile2: Sprite = null
+let question = 0
 let answer1 = 0
 scene.setBackgroundColor(7)
 info.setLife(3)
