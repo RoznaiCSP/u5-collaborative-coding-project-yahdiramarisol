@@ -36,6 +36,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . f f c c c c c c c c . . . . 
         `, SpriteKind.Enemy)
     projectile.setVelocity(0, 100)
+    projectile.setPosition(145, 0)
     controller.moveSprite(player2)
     player2.setStayInScreen(true)
 })
@@ -77,6 +78,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . f f c c c c c c c c . . . . 
         `, SpriteKind.Enemy)
     projectile.setVelocity(0, 100)
+    projectile.setPosition(145, 0)
     controller.moveSprite(player1)
     player1.setStayInScreen(true)
 })
