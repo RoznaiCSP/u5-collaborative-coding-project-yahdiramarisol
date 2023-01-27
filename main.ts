@@ -172,7 +172,8 @@ info.setLife(6)
 game.onUpdateInterval(2000, function () {
     if (game.ask("Would you like to continue?")) {
         game.splash("continue on with your given quest")
+        game.splash("Be care full don't get attacked by snake!")
     } else {
-        game.splash("Good bye")
+        game.splash("See you agaian next time")
     }
 })
