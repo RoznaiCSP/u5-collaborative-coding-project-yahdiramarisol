@@ -1,50 +1,15 @@
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    player2 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . c c c c . . . . 
-        . . . . . . c c d d d d c . . . 
-        . . . . . c c c c c c d c . . . 
-        . . . . c c 4 4 4 4 d c c . . . 
-        . . . c 4 d 4 4 4 4 4 1 c . c c 
-        . . c 4 4 4 1 4 4 4 4 d 1 c 4 c 
-        . c 4 4 4 4 1 4 4 4 4 4 1 c 4 c 
-        f 4 4 4 4 4 1 4 4 4 4 4 1 4 4 f 
-        f 4 4 4 f 4 1 c c 4 4 4 1 f 4 f 
-        f 4 4 4 4 4 1 4 4 f 4 4 d f 4 f 
-        . f 4 4 4 4 1 c 4 f 4 d f f f f 
-        . . f f 4 d 4 4 f f 4 c f c . . 
-        . . . . f f 4 4 4 4 c d b c . . 
-        . . . . . . f f f f d d d c . . 
-        . . . . . . . . . . c c c . . . 
-        `, SpriteKind.Player)
-    controller.moveSprite(player2)
-    player2.setStayInScreen(true)
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    player1 = sprites.create(img`
-        . . . . . . . . . . b 5 b . . . 
-        . . . . . . . . . b 5 b . . . . 
-        . . . . . . b b b b b b . . . . 
-        . . . . . b b 5 5 5 5 5 b . . . 
-        . . . . b b 5 d 1 f 5 5 d f . . 
-        . . . . b 5 5 1 f f 5 d 4 c . . 
-        . . . . b 5 5 d f b d d 4 4 . . 
-        . b b b d 5 5 5 5 5 4 4 4 4 4 b 
-        b d d d b b d 5 5 4 4 4 4 4 b . 
-        b b d 5 5 5 b 5 5 5 5 5 5 b . . 
-        c d c 5 5 5 5 d 5 5 5 5 5 5 b . 
-        c b d c d 5 5 b 5 5 5 5 5 5 b . 
-        . c d d c c b d 5 5 5 5 5 d b . 
-        . . c b d d d d d 5 5 5 b b . . 
-        . . . c c c c c c c c b b . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-    controller.moveSprite(player1)
-    player1.setStayInScreen(true)
+	
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
+    if (game.ask("Would you like to continue?")) {
+        game.splash("continue on with your given quest")
+    } else {
+        game.splash("Good bye")
+    }
 })
 // Don't forget to comment your code as you work!
-let player1: Sprite = null
-let player2: Sprite = null
+let projectile2: Sprite = null
 scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
@@ -167,9 +132,28 @@ scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     ee88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     `)
-game.splash(game.ask("Choose player A or B"))
 info.setLife(6)
-let projectile = sprites.createProjectileFromSide(img`
+let player1 = sprites.create(img`
+    . . . . . . . . . . b 5 b . . . 
+    . . . . . . . . . b 5 b . . . . 
+    . . . . . . b b b b b b . . . . 
+    . . . . . b b 5 5 5 5 5 b . . . 
+    . . . . b b 5 d 1 f 5 5 d f . . 
+    . . . . b 5 5 1 f f 5 d 4 c . . 
+    . . . . b 5 5 d f b d d 4 4 . . 
+    . b b b d 5 5 5 5 5 4 4 4 4 4 b 
+    b d d d b b d 5 5 4 4 4 4 4 b . 
+    b b d 5 5 5 b 5 5 5 5 5 5 b . . 
+    c d c 5 5 5 5 d 5 5 5 5 5 5 b . 
+    c b d c d 5 5 b 5 5 5 5 5 5 b . 
+    . c d d c c b d 5 5 5 5 5 d b . 
+    . . c b d d d d d 5 5 5 b b . . 
+    . . . c c c c c c c c b b . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
+controller.moveSprite(player1)
+player1.setStayInScreen(true)
+let projectile = sprites.create(img`
     . . . . . c c c c c c c . . . . 
     . . . . c 6 7 7 7 7 7 6 c . . . 
     . . . c 7 c 6 6 6 6 c 7 6 c . . 
@@ -186,28 +170,28 @@ let projectile = sprites.createProjectileFromSide(img`
     f 6 1 1 1 1 1 6 6 6 6 6 6 c . . 
     . f 6 1 1 1 1 1 6 6 6 6 c . . . 
     . . f f c c c c c c c c . . . . 
-    `, 50, 50)
-let projectile2 = sprites.createProjectileFromSprite(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . 4 4 . . . . . . . 
-    . . . . . . 4 5 5 4 . . . . . . 
-    . . . . . . 2 5 5 2 . . . . . . 
-    . . . . . . . 2 2 . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, projectile, -100, 0)
+    `, SpriteKind.Enemy)
 projectile.setVelocity(0, 100)
 projectile.setPosition(145, 0)
 projectile.setStayInScreen(true)
-game.onUpdate(function () {
-	
+forever(function () {
+    projectile2 = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 4 4 . . . . . . . 
+        . . . . . . 4 5 5 4 . . . . . . 
+        . . . . . . 2 5 5 2 . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, projectile, -100, 0)
+    pause(200)
 })
