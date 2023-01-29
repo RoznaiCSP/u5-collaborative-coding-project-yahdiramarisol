@@ -2,7 +2,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
-    if (game.ask("Would you like to continue?")) {
+    if (true) {
         game.splash("continue on with your given quest")
     } else {
         game.splash("Good bye")
@@ -174,6 +174,7 @@ let projectile = sprites.create(img`
 projectile.setVelocity(0, 100)
 projectile.setPosition(145, 0)
 projectile.setStayInScreen(true)
+let answer1 = 25
 forever(function () {
     projectile2 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
