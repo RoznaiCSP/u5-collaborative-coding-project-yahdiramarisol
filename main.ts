@@ -1,3 +1,6 @@
+/**
+ * Don't forget to comment your code as you work!
+ */
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     player2 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -42,7 +45,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     controller.moveSprite(player1)
     player1.setStayInScreen(true)
 })
-// Don't forget to comment your code as you work!
 let player1: Sprite = null
 let player2: Sprite = null
 scene.setBackgroundImage(img`
