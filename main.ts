@@ -1,15 +1,14 @@
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
-})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
-    if (true) {
+    game.splash(game.askForNumber("what is 5 x 5?", 2))
+    if (answer1) {
         game.splash("continue on with your given quest")
     } else {
-        game.splash("Good bye")
+        info.changeLifeBy(-1)
     }
 })
 // Don't forget to comment your code as you work!
 let projectile2: Sprite = null
+let answer1 = 0
 scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
@@ -174,7 +173,7 @@ let projectile = sprites.create(img`
 projectile.setVelocity(0, 100)
 projectile.setPosition(145, 0)
 projectile.setStayInScreen(true)
-let answer1 = 25
+answer1 = 25
 forever(function () {
     projectile2 = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
@@ -194,5 +193,5 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, projectile, -100, 0)
-    pause(200)
+    pause(100)
 })
