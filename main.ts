@@ -1,6 +1,3 @@
-/**
- * Don't forget to comment your code as you work!
- */
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     player2 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -262,7 +259,7 @@ info.setLife(6)
 game.onUpdateInterval(2000, function () {
     if (game.ask("Would you like to continue?")) {
         game.splash("continue on with your given quest")
-        game.splash("Be care full don't get attacked by snake!")
+        game.splash("Be carefull don't get attacked by snake!")
     } else {
         game.splash("See you agaian next time")
     }
