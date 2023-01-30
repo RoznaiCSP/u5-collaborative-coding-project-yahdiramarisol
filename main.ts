@@ -6,6 +6,9 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, ot
         info.changeLifeBy(-1)
     }
 })
+info.onLifeZero(function () {
+	
+})
 // Don't forget to comment your code as you work!
 let projectile2: Sprite = null
 let answer1 = 0
@@ -193,5 +196,5 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, projectile, -100, 0)
-    pause(100)
+    pause(200)
 })
