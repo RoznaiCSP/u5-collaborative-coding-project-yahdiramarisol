@@ -7,7 +7,8 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, ot
     }
 })
 info.onLifeZero(function () {
-	
+    game.splash("Game over :( Goodbye")
+    game.gameOver(false)
 })
 // Don't forget to comment your code as you work!
 let projectile2: Sprite = null
