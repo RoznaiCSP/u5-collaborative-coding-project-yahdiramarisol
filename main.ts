@@ -1,14 +1,15 @@
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
     game.splash(game.askForNumber("what is 5 x 5?", 2))
-    if (answer1) {
+    if (25 == answer1) {
         game.splash("continue on with your given quest")
     } else {
         info.changeLifeBy(-1)
+        game.splash("Game over :( Goodbye")
+        game.gameOver(false)
     }
 })
 info.onLifeZero(function () {
-    game.splash("Game over :( Goodbye")
-    game.gameOver(false)
+	
 })
 // Don't forget to comment your code as you work!
 let projectile2: Sprite = null
@@ -135,7 +136,7 @@ scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     ee88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     `)
-info.setLife(6)
+info.setLife(1)
 let player1 = sprites.create(img`
     . . . . . . . . . . b 5 b . . . 
     . . . . . . . . . b 5 b . . . . 
@@ -197,5 +198,5 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, projectile, -100, 0)
-    pause(200)
+    pause(300)
 })
